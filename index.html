@@ -81,7 +81,8 @@ p{margin:0}
 .pill-title.t-purple{background:var(--purple);color:var(--paper)}
 .section-head{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:36px}
 .section-head .sub{font-size:19px;font-weight:600;max-width:60ch}
-.on-dark .sub{color:var(--paper)}
+.on-dark .sub,.on-dark .eyebrow{color:var(--paper)}
+.bridge{display:flex;justify-content:center;margin-top:28px}
 .eyebrow{font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
 .card{background:var(--paper);border:3px solid var(--ink);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:26px}
 .tag{display:inline-block;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px;border:2px solid var(--ink);background:var(--paper)}
@@ -293,7 +294,7 @@ footer .brand .dot{border-color:var(--paper)}
     <ul>
       <li><a class="link" href="#home">Home</a></li>
       <li><a class="link" href="#impact">Idea to Impact</a></li>
-      <li><a class="link" href="#process">Our Process</a></li>
+      <li><a class="link" href="#foundation">Our Process</a></li>
       <li><a class="link" href="#pricing">Pricing</a></li>
       <li><a class="link" href="#contact">Contact and Apply</a></li>
       <li><a class="link" href="#faq">FAQs for Microschool Founders</a></li>
@@ -309,7 +310,7 @@ footer .brand .dot{border-color:var(--paper)}
       <div class="tagline"><b>Lived Experience Meets<br>Real-world problem Solving</b></div>
       <div class="ctas">
         <a class="btn primary" href="https://calendar.app.google/iPwzupLD5fy15j467" target="_blank" rel="noopener">Register for a 15-minute info session to find your fit →</a>
-        <a class="btn alt" href="#process">Explore the curriculum</a>
+        <a class="btn alt" href="#foundation">Explore the curriculum</a>
       </div>
     </div>
     <div class="glance" aria-label="At a glance">
@@ -479,10 +480,40 @@ footer .brand .dot{border-color:var(--paper)}
   </div>
 </section>
 
+<!-- FOUNDATION -->
+<section class="band blue" id="foundation">
+  <div class="wrap">
+    <div class="section-head on-dark">
+      <span class="eyebrow">The curriculum &middot; 1 of 2</span>
+      <h2 class="pill-title">The Foundation</h2>
+    </div>
+    <div class="foundation">
+      <article class="card">
+        <h3>Leadership and Storytelling</h3>
+        <p>Students learn to turn their own experience into a reason to act.</p>
+        <p class="basis"><b>Theoretical framework</b>We build on Marshall Ganz’s storytelling method from Harvard Kennedy School, widely used to train community organizers, and Kouzes and Posner’s leadership research, which is taught in leadership programs around the world.</p>
+      </article>
+      <article class="card">
+        <h3>Community Research and Design</h3>
+        <p>Students investigate real problems alongside the people who live with them, then compare their options using evidence.</p>
+        <p class="basis"><b>Theoretical framework</b>Stanford’s d.school approach to design is used by companies and schools alike, and the Pugh chart is a standard decision tool in engineering.</p>
+      </article>
+      <article class="card">
+        <h3>Project-Based Learning</h3>
+        <p>Students spend weeks on a real problem, then present the result publicly.</p>
+        <p class="basis"><b>Theoretical framework</b>Every project starts from the end goal using backward design, which educators worldwide have used since 1998. We also design for every learner with Universal Design for Learning, now defined and endorsed in U.S. federal education law.</p>
+      </article>
+    </div>
+    <p class="blend">Blended into one student-led, real-world experience, using methods educators and professionals already rely on.</p>
+    <div class="bridge"><a class="btn primary" href="#process">Next: see it week by week &darr;</a></div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section class="band paper" id="process">
   <div class="wrap">
     <div class="section-head">
+      <span class="eyebrow">The curriculum &middot; 2 of 2</span>
       <h2 class="pill-title t-blue">Our Process</h2>
       <p class="sub">Eight weeks, from your own story to something someone else can build on.</p>
     </div>
@@ -534,32 +565,6 @@ footer .brand .dot{border-color:var(--paper)}
       <button class="btn" id="prev" style="background:var(--paper)">← Previous</button>
       <button class="btn primary" id="next">Next stage →</button>
     </div>
-  </div>
-</section>
-
-<section class="band blue">
-  <div class="wrap">
-    <div class="section-head on-dark">
-      <h2 class="pill-title">The Foundation</h2>
-    </div>
-    <div class="foundation">
-      <article class="card">
-        <h3>Leadership and Storytelling</h3>
-        <p>Students learn to turn their own experience into a reason to act.</p>
-        <p class="basis"><b>Theoretical framework</b>We build on Marshall Ganz’s storytelling method from Harvard Kennedy School, widely used to train community organizers, and Kouzes and Posner’s leadership research, which is taught in leadership programs around the world.</p>
-      </article>
-      <article class="card">
-        <h3>Community Research and Design</h3>
-        <p>Students investigate real problems alongside the people who live with them, then compare their options using evidence.</p>
-        <p class="basis"><b>Theoretical framework</b>Stanford’s d.school approach to design is used by companies and schools alike, and the Pugh chart is a standard decision tool in engineering.</p>
-      </article>
-      <article class="card">
-        <h3>Project-Based Learning</h3>
-        <p>Students spend weeks on a real problem, then present the result publicly.</p>
-        <p class="basis"><b>Theoretical framework</b>Every project starts from the end goal using backward design, which educators worldwide have used since 1998. We also design for every learner with Universal Design for Learning, now defined and endorsed in U.S. federal education law.</p>
-      </article>
-    </div>
-    <p class="blend">Blended into one student-led, real-world experience, using methods educators and professionals already rely on.</p>
   </div>
 </section>
 
@@ -816,7 +821,7 @@ footer .brand .dot{border-color:var(--paper)}
   } else if(navBrand){navBrand.classList.add('show')}
 
   // Scrollspy
-  const map={home:'home',streams:'home',impact:'impact',process:'process',pricing:'pricing',contact:'contact',faq:'faq'};
+  const map={home:'home',streams:'home',impact:'impact',foundation:'process',process:'process',pricing:'pricing',contact:'contact',faq:'faq'};
   const links=$$('.nav a.link');
   const secs=Object.keys(map).map(id=>document.getElementById(id));
   const spy=()=>{let active='home';const y=window.scrollY+120;secs.forEach(s=>{if(s.offsetTop<=y)active=map[s.id]});
