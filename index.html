@@ -234,6 +234,11 @@ p{margin:0}
 .giveback div{flex:1 1 280px;min-width:0}
 .giveback h3{font-size:clamp(22px,2.8vw,28px);margin-bottom:6px}
 .path.host{background:var(--sage)}
+.hostcalc{display:flex;flex-direction:column;gap:10px;background:var(--paper);border:3px solid var(--ink);border-radius:14px;padding:14px}
+.hostcalc .counter{align-self:flex-start}
+.hostcalc .counter output{min-width:104px}
+.hosttotal{font:800 20px/1.2 var(--display)}
+.hosttotal span{font-variant-numeric:tabular-nums}
 .path .lead{font:800 20px/1.25 var(--display)}
 .calc{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-top:36px}
 .counter{display:flex;align-items:center;border:3px solid var(--ink);border-radius:14px;overflow:hidden;background:var(--paper)}
@@ -646,7 +651,16 @@ footer .brand .dot{border-color:var(--paper)}
         <span class="label-chip" style="background:var(--blue);color:var(--paper);align-self:flex-start">Founders &amp; hosts</span>
         <h3>Founders Benefit</h3>
         <p class="lead">Hosting gives back to your school.</p>
-        <p>Founders who host receive a hosting credit that goes back into your school. Inquire to see how much you are eligible for.</p>
+        <p>Host a cohort and your school receives <strong>$20 for every student who takes part</strong>, sponsored-seat students included. It&rsquo;s paid in cash the week after the cohort ends.</p>
+        <div class="hostcalc">
+          <p class="eyebrow">Students at your school</p>
+          <div class="counter">
+            <button type="button" id="hostMinus" aria-label="Fewer students">&minus;</button>
+            <output id="hostSize" aria-live="polite">8 students</output>
+            <button type="button" id="hostPlus" aria-label="More students">+</button>
+          </div>
+          <p class="hosttotal">Your school receives <span id="hostCredit">$160</span></p>
+        </div>
         <a class="btn pending" role="button" aria-disabled="true" tabindex="0">Ask about your credit*</a>
       </article>
     </div>
@@ -686,7 +700,7 @@ footer .brand .dot{border-color:var(--paper)}
         <details><summary>How much time does a team need?</summary><p class="ans">Teams should plan on 5-7 hours a week.</p></details>
         <details><summary>How self-directed is it?</summary><p class="ans">Mostly. Each week has a clear task, and biweekly office hours and checkpoint reviews help teams stay on track.</p></details>
         <details><summary>What do founders need to do?</summary><p class="ans">Our program is very hands-off for founders. Suggest teams a regular time to meet, like after school, or during school in your prep time. We handle the materials, stakeholder help, and office hours.</p></details>
-        <details><summary>What do founders get for hosting?</summary><p class="ans">Founders who host receive a hosting credit that goes back into your school. Inquire to see how much you are eligible for.</p></details>
+        <details><summary>What do founders get for hosting?</summary><p class="ans">Your school receives $20 for every student who takes part, sponsored-seat students included. It&rsquo;s paid in cash the week after the cohort ends and goes back into your school. Use the calculator in Contact and Apply to see your total.</p></details>
         <details><summary>Can we make it our own?</summary><p class="ans">Yes. Add your own twist and have students connect the sprint to a subject they’re already studying, or a learning goal you wanted to build a project on.</p></details>
         <details><summary>Do students need prior experience?</summary><p class="ans">No. The first two weeks start from what each student already knows.</p></details>
         <details><summary>How does it end?</summary><p class="ans">In Week 8, teams publish a project record and a jumping-off plan, then present at a public showcase, streamed live and recorded.</p></details>
@@ -780,6 +794,13 @@ footer .brand .dot{border-color:var(--paper)}
   $('#minus').addEventListener('click',()=>{if(size>1){size--;draw()}});
   $('#plus').addEventListener('click',()=>{if(size<12){size++;draw()}});
   draw();
+
+  // Hosting credit calculator
+  let hs=8;
+  const drawHost=()=>{$('#hostSize').textContent=hs+(hs===1?' student':' students');$('#hostCredit').textContent='$'+(hs*20).toLocaleString('en-US')};
+  $('#hostMinus').addEventListener('click',()=>{if(hs>1){hs--;drawHost()}});
+  $('#hostPlus').addEventListener('click',()=>{if(hs<40){hs++;drawHost()}});
+  drawHost();
 
   // Pending links + copy
   $$('.pending').forEach(b=>{const f=e=>{if(e.type==='click'||e.key==='Enter'||e.key===' '){e.preventDefault();toast('Form link coming soon. Email us in the meantime.')}};b.addEventListener('click',f);b.addEventListener('keydown',f)});
